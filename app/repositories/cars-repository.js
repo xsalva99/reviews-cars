@@ -1,32 +1,19 @@
 "use strict";
 
-const cars = [
-  {
-    id: 1,
-    brand: "Seat",
-    model: "Ibiza",
-    year: 2009,
-    engine: "Diesel",
-    cv: 60,
-  },
-  {
-    id: 2,
-    brand: "Seat",
-    model: "Toledo",
-    year: 1999,
-    engine: "Diesel",
-    cv: 120,
-  },
-];
+const getPool = require("../infrastucture/database");
 
-function findAllCars() {
-  // const sql = SELECT * FROM cars;
+async function findAllCars() {
+  const pool = await getPool();
+  const sql = "SELECT * FROM cars";
+  const [cars] = await pool.query(sql);
+
   return cars;
 }
 
 function findCarById(id) {
   // const sql = SELECT * FROM cars WHERE id = id;
-  return cars.find((car) => car.id === +id); // con el + conviertes string en nº
+  // return cars.find((car) => car.id === +id); // con el + conviertes string en nº
+  return true;
 }
 
 module.exports = {

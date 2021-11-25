@@ -4,7 +4,7 @@ const { findCarById } = require("../../repositories/cars-repository"); //consult
 
 // servidor
 function getCarById(req, res) {
-  const { id } = findCarById(id);
+  const { id } = req.params;
   // Si existe, si es un nº
   const car = findCarById(id);
   if (!car) {
